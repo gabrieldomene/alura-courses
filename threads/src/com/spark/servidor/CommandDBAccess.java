@@ -1,0 +1,26 @@
+package com.spark.servidor;
+
+import java.io.PrintStream;
+import java.util.Random;
+import java.util.concurrent.Callable;
+
+public class CommandDBAccess implements Callable<String> {
+
+    private PrintStream out;
+
+    public CommandDBAccess(PrintStream out) {
+        this.out = out;
+    }
+
+    @Override
+    public String call() throws Exception {
+        System.out.println("Running command ACCESS");
+
+        out.println("processando c2 DB");
+        Thread.sleep(10000);
+
+        int number = new Random().nextInt(100) + 1;
+        out.println("server finished ACCESS ok");
+        return Integer.toString(number);
+    }
+}
